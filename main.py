@@ -26,7 +26,7 @@ with open("./test/test.jpg", "rb") as file:
     btn = st.download_button(
             label="Download image for testing",
             data=file,
-            file_name="tes.jpg",
+            file_name="test.jpg",
             mime="image/jpg"
           )
 
