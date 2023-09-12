@@ -52,8 +52,9 @@ if uploaded_file is not None:
             class_id = result.names[box.cls[0].item()]
             cords = box.xyxy[0].tolist()
             cords = [round(x) for x in cords]
-            conf = (round(box.conf[0].item(), 2))*100
+            conf = (round(box.conf[0].item(), 2))  
+            percentage_conf = f"{conf * 100:.0f}%"
             st.text(f"Object type: {class_id}")
             st.text(f"Coordinates: {cords}")
-            st.text(f"Probability: {conf}%")
+            st.text(f"Confidence: {percentage_conf}")
             st.divider()
