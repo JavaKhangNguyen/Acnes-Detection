@@ -37,9 +37,10 @@ if uploaded_file is not None:
     file_ext = uploaded_file.name.split('.')[ext_position]
     if file_ext in image_ext:
         image = Image.open(uploaded_file)
+        processed_image = image.resize((800, 800))
         st.header("Uploaded Image")
-        st.image(image)
-        results = model.predict(image)
+        st.image(processed_image)
+        results = model.predict(processed_image)
         result = results[0]
         st.write(f'Result: {len(results[0].boxes)} acnes detected')
         st.header("Predictions Result")
