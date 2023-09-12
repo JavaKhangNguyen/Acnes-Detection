@@ -21,6 +21,7 @@ model = YOLO('./Model/acnes(8m).pt')
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
+st.text("Types of acnes that this model can classify: acne_scars, blackhead, cystic, flat_wart, folliculitis, keloid, milium, papular, purulent, sebo-crystan-conglo, syringoma, whitehead")
 
 with open("./test/test.jpg", "rb") as file:
     btn = st.download_button(
