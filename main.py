@@ -58,3 +58,4 @@ if uploaded_file is not None:
             st.text(f"Coordinates: {cords}")
             st.text(f"Confidence: {percentage_conf}")
             st.divider()
+st.image('./logo/AIoT.png', width=700)
