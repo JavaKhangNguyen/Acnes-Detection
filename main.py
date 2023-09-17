@@ -17,7 +17,7 @@ style = """
 st.set_page_config(page_title='Acnes detection')
 st.markdown(style, unsafe_allow_html=True)
 
-model = YOLO('./Model/acnes(8m).pt')
+model = YOLO('./Model/acnes_v2(8m).pt')
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
