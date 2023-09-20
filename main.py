@@ -39,7 +39,17 @@ if uploaded_file is not None:
     file_ext = uploaded_file.name.split('.')[ext_position]
     if file_ext in image_ext:
         image = Image.open(uploaded_file)
-        processed_image = image.resize((800, 800))
+        # Resize the image while maintaining aspect ratio
+        max_size = 800
+        img_width, img_height = image.size
+        if img_width > max_size or img_height > max_size:
+            if img_width > img_height:
+                new_width = max_size
+                new_height = int((max_size / img_width) * img_height)
+            else:
+                new_height = max_size
+                new_width = int((max_size / img_height) * img_width)
+        processed_image = image.resize((new_width, new_height))
         st.header("Uploaded Image")
         st.image(processed_image)
         results = model.predict(processed_image)
