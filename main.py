@@ -43,13 +43,27 @@ if uploaded_file is not None:
         max_size = 800
         img_width, img_height = image.size
         if img_width > max_size or img_height > max_size:
+            # Calculate the aspect ratio
+            aspect_ratio = img_width / img_height
             if img_width > img_height:
                 new_width = max_size
-                new_height = int((max_size / img_width) * img_height)
+                new_height = int(max_size / aspect_ratio)
             else:
                 new_height = max_size
-                new_width = int((max_size / img_height) * img_width)
+                new_width = int(max_size * aspect_ratio)
             image = image.resize((new_width, new_height))
+            
+        else:
+            # If both width and height are smaller than max_size, upscale to max_size
+            aspect_ratio = img_width / img_height
+            if img_width > img_height:
+                new_width = max_size
+                new_height = int(max_size / aspect_ratio)
+            else:
+                new_height = max_size
+                new_width = int(max_size * aspect_ratio)
+            image = image.resize((new_width, new_height))
+            
         st.header("Uploaded Image")
         st.image(image)
         results = model.predict(image)
