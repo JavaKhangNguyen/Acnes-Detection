@@ -1,10 +1,11 @@
 import streamlit as st
 import torch
 import torchvision
-from PIL import Image
-import torchvision.transforms as T
-from torchvision import transforms
 import os
+import torchvision.transforms as T
+
+from PIL import Image
+from torchvision import transforms
 from ultralytics import YOLO
 
 #Styling
