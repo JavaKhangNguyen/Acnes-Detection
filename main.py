@@ -49,10 +49,10 @@ if uploaded_file is not None:
             else:
                 new_height = max_size
                 new_width = int((max_size / img_height) * img_width)
-        processed_image = image.resize((new_width, new_height))
+            image = image.resize((new_width, new_height))
         st.header("Uploaded Image")
-        st.image(processed_image)
-        results = model.predict(processed_image)
+        st.image(image)
+        results = model.predict(image)
         result = results[0]
         st.write(f'Result: {len(results[0].boxes)} acnes detected')
         st.header("Predictions Result")
