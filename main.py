@@ -51,7 +51,7 @@ if uploaded_file is not None:
             else:
                 new_height = max_size
                 new_width = int(max_size * aspect_ratio)
-            image = image.resize((new_width, new_height))
+            image = image.resize((new_width, new_height), Image.ANTIALIAS)
             
         else:
             # If both width and height are smaller than max_size, upscale to max_size
@@ -62,7 +62,7 @@ if uploaded_file is not None:
             else:
                 new_height = max_size
                 new_width = int(max_size * aspect_ratio)
-            image = image.resize((new_width, new_height))
+            image = image.resize((new_width, new_height), Image.ANTIALIAS)
             
         st.header("Uploaded Image")
         st.image(image)
