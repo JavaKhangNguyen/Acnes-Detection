@@ -34,7 +34,7 @@ with open("./test/test.jpg", "rb") as file:
             mime="image/jpg"
           )
 
-uploaded_file = st.file_uploader("Or choose a file")
+uploaded_file = st.file_uploader("Or choose a file", accept_multiple_files=False, type=["png", "jpg", "jpeg", "heic", "heif"])
 if uploaded_file is not None:
     ext_position = len(uploaded_file.name.split('.')) - 1
     file_ext = uploaded_file.name.split('.')[ext_position]
