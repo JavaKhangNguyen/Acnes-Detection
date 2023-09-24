@@ -1,10 +1,11 @@
 import streamlit as st
 import torch
 import torchvision
-from PIL import Image
-import torchvision.transforms as T
-from torchvision import transforms
 import os
+import torchvision.transforms as T
+
+from PIL import Image
+from torchvision import transforms
 from ultralytics import YOLO
 
 #Styling
@@ -33,7 +34,7 @@ with open("./test/test.jpg", "rb") as file:
             mime="image/jpg"
           )
 
-uploaded_file = st.file_uploader("Or choose a file")
+uploaded_file = st.file_uploader("Or choose a file", accept_multiple_files=False, type=["png", "jpg", "jpeg", "heic", "heif"])
 if uploaded_file is not None:
     ext_position = len(uploaded_file.name.split('.')) - 1
     file_ext = uploaded_file.name.split('.')[ext_position]
@@ -43,16 +44,30 @@ if uploaded_file is not None:
         max_size = 800
         img_width, img_height = image.size
         if img_width > max_size or img_height > max_size:
+            # Calculate the aspect ratio
+            aspect_ratio = img_width / img_height
             if img_width > img_height:
                 new_width = max_size
-                new_height = int((max_size / img_width) * img_height)
+                new_height = int(max_size / aspect_ratio)
             else:
                 new_height = max_size
-                new_width = int((max_size / img_height) * img_width)
-        processed_image = image.resize((new_width, new_height))
+                new_width = int(max_size * aspect_ratio)
+            image = image.resize((new_width, new_height), Image.ANTIALIAS)
+            
+        else:
+            # If both width and height are smaller than max_size, upscale to max_size
+            aspect_ratio = img_width / img_height
+            if img_width > img_height:
+                new_width = max_size
+                new_height = int(max_size / aspect_ratio)
+            else:
+                new_height = max_size
+                new_width = int(max_size * aspect_ratio)
+            image = image.resize((new_width, new_height), Image.ANTIALIAS)
+            
         st.header("Uploaded Image")
-        st.image(processed_image)
-        results = model.predict(processed_image)
+        st.image(image)
+        results = model.predict(image)
         result = results[0]
         st.write(f'Result: {len(results[0].boxes)} acnes detected')
         st.header("Predictions Result")
