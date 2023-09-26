@@ -67,7 +67,9 @@ if uploaded_file is not None:
             
         st.header("Uploaded Image")
         st.image(image)
-        results = model.predict(image)
+        with st.spinner("AI is processing your image"):
+            results = model.predict(image)
+        
         result = results[0]
         st.write(f'Result: {len(results[0].boxes)} acnes detected')
         st.header("Predictions Result")
