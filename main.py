@@ -89,5 +89,7 @@ if uploaded_file is not None:
             st.text(f"Coordinates: {cords}")
             st.text(f"Confidence: {percentage_conf}")
             st.divider()
-            
+    st.info("**TIP**: If the model cannot predict the uploaded image, try to preprocess it before uploading again "
+            "The best result will be achieved if the image focus mainly on the acnes. ")
+
 st.image('./logo/AIoT.png', width=700)
