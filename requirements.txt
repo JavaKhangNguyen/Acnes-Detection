@@ -3,7 +3,7 @@ torch
 ultralytics==8.0.188
 numpy
 opencv-python-headless==4.8.0.76
-Pillow==10.0.1
+Pillow==9.5.0
 scipy==1.11.2
 filterpy==1.4.5
 matplotlib==3.8.0
