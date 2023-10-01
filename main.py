@@ -18,7 +18,12 @@ style = """
 st.set_page_config(page_title='Acnes detection')
 st.markdown(style, unsafe_allow_html=True)
 
-model = YOLO('./Model/acnes_v3(8m).pt')
+@st.cache_resource(show_spinner="Please be patient! AI is waking up...", ttl=7200) #Cache the model for first time load
+def load_model():
+    model = YOLO('./Model/faceshape_v2(8m).pt')
+    return model
+
+model = load_model()
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
