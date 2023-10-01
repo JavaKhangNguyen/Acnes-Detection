@@ -42,7 +42,7 @@ if uploaded_file is not None:
         image = Image.open(uploaded_file)
         #Resize image while maintaining aspect ratio
         size = 800, 800
-        image = image.thumbnail(size, Image.Resampling.LANCZOS)
+        image.thumbnail(size, Image.Resampling.LANCZOS)
             
         st.header("Uploaded Image")
         st.image(image)
