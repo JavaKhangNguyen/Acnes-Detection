@@ -39,7 +39,8 @@ if uploaded_file is not None:
     ext_position = len(uploaded_file.name.split('.')) - 1
     file_ext = uploaded_file.name.split('.')[ext_position]
     if file_ext in image_ext:
-        image = Image.open(uploaded_file) 
+        image = Image.open(uploaded_file)
+        #Resize image while maintaining aspect ratio
         size = 800, 800
         image = image.thumbnail(size, Image.Resampling.LANCZOS)
             
