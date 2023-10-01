@@ -50,6 +50,7 @@ if uploaded_file is not None:
             results = model.predict(image)
         
         result = results[0]
+        st.success("✅ AI has finished the job! ✅")
         st.write(f'Result: {len(results[0].boxes)} acnes detected')
         st.header("Predictions Result")
         result_plotted = result.plot()
