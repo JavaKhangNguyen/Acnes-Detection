@@ -39,31 +39,9 @@ if uploaded_file is not None:
     ext_position = len(uploaded_file.name.split('.')) - 1
     file_ext = uploaded_file.name.split('.')[ext_position]
     if file_ext in image_ext:
-        image = Image.open(uploaded_file)
-        # Resize the image while maintaining aspect ratio
-        max_size = 800
-        img_width, img_height = image.size
-        if img_width > max_size or img_height > max_size:
-            # Calculate the aspect ratio
-            aspect_ratio = img_width / img_height
-            if img_width > img_height:
-                new_width = max_size
-                new_height = int(max_size / aspect_ratio)
-            else:
-                new_height = max_size
-                new_width = int(max_size * aspect_ratio)
-            image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
-            
-        else:
-            # If both width and height are smaller than max_size, upscale to max_size
-            aspect_ratio = img_width / img_height
-            if img_width > img_height:
-                new_width = max_size
-                new_height = int(max_size / aspect_ratio)
-            else:
-                new_height = max_size
-                new_width = int(max_size * aspect_ratio)
-            image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
+        image = Image.open(uploaded_file) 
+        size = 800, 800
+        image = image.thumbnail(size, Image.Resampling.LANCZOS)
             
         st.header("Uploaded Image")
         st.image(image)
