@@ -1,11 +1,6 @@
 import streamlit as st
-import torch
-import torchvision
-import os
-import torchvision.transforms as T
 
 from PIL import Image
-from torchvision import transforms
 from ultralytics import YOLO
 
 #Styling
@@ -20,7 +15,11 @@ st.markdown(style, unsafe_allow_html=True)
 
 @st.cache_resource(show_spinner="Please be patient! AI is waking up...", ttl=7200) #Cache the model for first time load
 def load_model():
-    model = YOLO('./Model/acnes_v3(8m).pt')
+    option = st.selectbox('Choose a version',('Version 1', 'Version 2'))
+    if option == 'Version 1':
+        model = YOLO('./Model/acnes_v1.pt')
+    else:
+        model = YOLO('./Model/acnes_v3(8m).pt')
     return model
 
 model = load_model()
