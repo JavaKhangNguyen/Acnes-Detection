@@ -17,7 +17,7 @@ st.markdown(style, unsafe_allow_html=True)
 def load_model():
     option = st.selectbox('Choose a version',('Version 1', 'Version 2'))
     if option == 'Version 1':
-        model = YOLO('./Model/acnes_v1.pt')
+        model = YOLO('./Model/acnes_v1(8m).pt')
     else:
         model = YOLO('./Model/acnes_v3(8m).pt')
     return model
