@@ -20,7 +20,7 @@ def load_model():
     #     model = YOLO('./Model/acnes_v1(8m).pt')
     # else:
     #     model = YOLO('./Model/acnes_v3(8m).pt')
-    model = YOLO('./Model/acnes_v1(8m).pt')
+    model = YOLO('./Model/acnes_v3(8m).pt')
     return model
 
 
