@@ -21,6 +21,8 @@ def load_model():
     else:
         model = YOLO('./Model/acnes_v3(8m).pt')
     return model
+
+st.write("Chosen model: ", option)
 model = load_model()
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
