@@ -13,16 +13,17 @@ style = """
 st.set_page_config(page_title='Acnes detection')
 st.markdown(style, unsafe_allow_html=True)
 
-option = st.selectbox('Choose a version',('Version 1', 'Version 2'))
-@st.cache_resource(show_spinner="Please be patient! AI is waking up...", ttl=7200) #Cache the model for first time load
+# option = st.selectbox('Choose a version',('Version 1', 'Version 2'))
+# @st.cache_resource(show_spinner="Please be patient! AI is waking up...", ttl=7200) #Cache the model for first time load
 def load_model():
-    if option == 'Version 1':
-        model = YOLO('./Model/acnes_v1(8m).pt')
-    else:
-        model = YOLO('./Model/acnes_v3(8m).pt')
+    # if option == 'Version 1':
+    #     model = YOLO('./Model/acnes_v1(8m).pt')
+    # else:
+    #     model = YOLO('./Model/acnes_v3(8m).pt')
+    model = YOLO('./Model/acnes_v1(8m).pt')
     return model
 
-st.write("Chosen model: ", option)
+
 model = load_model()
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
