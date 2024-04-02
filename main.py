@@ -27,9 +27,9 @@ model = YOLO('./Model/acnes_v2(8m).pt')
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
-st.text("Types of acnes that this model can classify: acne_scars, blackhead, cystic, ")
-st.text("flat_wart, folliculitis, keloid, milium, papular, purulent, sebo-crystan-conglo,")
-st.text("syringoma, whitehead")
+st.write("Types of acnes that this model can classify: acne_scars, blackhead, cystic, ")
+st.write("flat_wart, folliculitis, keloid, milium, papular, purulent, sebo-crystan-conglo,")
+st.write("syringoma, whitehead")
 
 with open("./test/test.jpg", "rb") as file:
     btn = st.download_button(
@@ -70,9 +70,9 @@ if uploaded_file is not None:
             cords = [round(x) for x in cords]
             conf = (round(box.conf[0].item(), 2))  
             percentage_conf = f"{conf * 100:.0f}%"
-            st.text(f"Object type: {class_id}")
-            st.text(f"Coordinates: {cords}")
-            st.text(f"Confidence: {percentage_conf}")
+            st.write(f"Object type: {class_id}")
+            st.write(f"Coordinates: {cords}")
+            st.write(f"Confidence: {percentage_conf}")
             st.divider()
     st.info("**TIP**: If the model cannot predict the uploaded image, try to preprocess it before uploading again "
             "The best result will be achieved if the image focus mainly on the acnes. ")
