@@ -29,8 +29,12 @@ image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
 
 st.header("Acnes Detection")
-st.write("Types of acnes that this model can classify: acne_scars, blackhead, cystic, flat_wart, folliculitis, keloid, milium, papular, purulent, sebo-crystan-conglo, syringoma, whitehead")
-
+st.markdown(
+        """
+        **Types of acnes that this model can classify: acne_scars, blackhead, cystic, flat_wart, folliculitis, keloid, milium, papular, purulent, 
+        sebo-crystan-conglo, syringoma, whitehead**
+        """
+)
 with open("./test/test.jpg", "rb") as file:
     btn = st.download_button(
             label="Download image for testing",
