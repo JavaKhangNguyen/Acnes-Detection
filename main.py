@@ -56,8 +56,8 @@ if uploaded_file is not None:
         st.header("Uploaded Image")
         st.image(image)
         with st.spinner("AI is processing your image"):
-            # results = model.predict(image, conf=0.6)
-            results = model.predict(image)
+            results = model.predict(image, conf=0.6)
+            
         
         result = results[0]
         st.success("✅ AI has finished the job! ✅")
