@@ -12,18 +12,8 @@ style = """
 
 st.set_page_config(page_title='Acnes Detection')
 st.markdown(style, unsafe_allow_html=True)
-option = st.selectbox('Choose a version',('ACNE8M', 'ACNES9-Alpha'))
 
-def load_model():
-    if option == 'Version 1':
-        model = YOLO('./Model/acnes_v1(8m).pt')
-    else:
-        model = YOLO('./Model/ACNE9.pt')
-
-    return model
-
-model = load_model()
-# model = YOLO('./Model/acnes_v2(8m).pt')
+model = YOLO('./Model/ACNE8M.pt')
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
