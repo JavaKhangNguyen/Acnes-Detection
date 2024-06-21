@@ -22,8 +22,8 @@ image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 st.header("Acnes Detection")
 st.markdown(
         """
-        **Types of acnes that this model can classify: acne_scars, blackhead, cystic, flat_wart, folliculitis, keloid, milium, papular, purulent, 
-        sebo-crystan-conglo, syringoma, whitehead**
+        **Types of acnes that this model can classify: Acne scars, Blackhead, Cystic, Flat wart, Folliculitis, Keloid, Milium, Papular, Purulent, 
+        Sebo-crystan-conglo, Syringoma, Whitehead**
         """
 )
 with open("./test/test.jpg", "rb") as file:
