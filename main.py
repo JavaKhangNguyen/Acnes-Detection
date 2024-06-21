@@ -1,7 +1,7 @@
 import streamlit as st
 
 from PIL import Image
-from ultralytics import YOLO
+from ultralytics import YOLO, YOLOv10
 
 #Styling
 style = """
@@ -13,7 +13,8 @@ style = """
 st.set_page_config(page_title='Acnes Detection')
 st.markdown(style, unsafe_allow_html=True)
 
-model = YOLO('./Model/ACNE8M.pt')
+# model = YOLO('./Model/ACNE8M.pt')
+model = YOLOv10('./Model/ACNE10.pt')
 
 image_ext = ["png", "jpg", "jpeg", "heic", "heif"]
 
@@ -46,7 +47,7 @@ if uploaded_file is not None:
         st.header("Uploaded Image")
         st.image(image)
         with st.spinner("AI is processing your image"):
-            results = model.predict(image, conf=0.6)
+            results = model.predict(image, conf=0.5)
             
         
         result = results[0]
