@@ -2,7 +2,7 @@ streamlit
 torch
 git+https://github.com/THU-MIG/yolov10
 numpy
-opencv-python-headless==4.8.0.76
+opencv-python-headless==4.10.0.84
 Pillow
 scipy==1.11.2
 filterpy==1.4.5
